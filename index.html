@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Full Stack Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name: projects, skills, experience and ways to get in touch.">
+  <meta name="theme-color" content="#0b0d10">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS v4 browser build (zero-build prototype). Use ONLY this approach. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.4"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply saved theme before first paint (no flash, no layout shift) -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body class="antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header id="header" class="sticky top-0 z-50 header">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <a href="#home" class="font-heading text-lg font-bold tracking-tight" data-bind="initials" aria-label="Home"></a>
+      <nav aria-label="Primary" class="hidden items-center gap-1 md:flex" id="desktop-nav"></nav>
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="btn btn-primary hidden md:inline-flex">Let's Connect</a>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch color theme">
+          <i data-lucide="sun" class="icon-sun"></i><i data-lucide="moon" class="icon-moon"></i>
+        </button>
+        <button id="menu-toggle" class="icon-btn md:hidden" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden" hidden>
+      <nav aria-label="Mobile" class="flex flex-col gap-1 px-5 pb-5" id="mobile-nav"></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero-bg" aria-labelledby="hero-title">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-[1.4fr_1fr] md:py-28">
+        <div>
+          <p id="availability" class="badge mb-6" hidden><span class="dot"></span><span data-bind="availability"></span></p>
+          <p class="mb-3 text-lg text-muted">Hi, I'm <span class="text-main font-medium" data-bind="name"></span>.</p>
+          <h1 id="hero-title" class="text-[clamp(2.25rem,6vw,4.25rem)] font-bold leading-[1.05] tracking-tight" data-bind="headline"></h1>
+          <p class="mt-4 font-heading text-xl text-accent" aria-live="off"><span id="role-text"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg" data-bind="intro"></p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-primary">Explore My Work</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+          <div id="hero-social" class="mt-8 flex gap-2"></div>
+        </div>
+        <div class="mx-auto w-full max-w-xs">
+          <div class="avatar">
+            <img id="avatar-img" alt="Portrait of the portfolio owner" width="320" height="400" hidden>
+            <span id="avatar-fallback" class="font-heading text-6xl font-bold" data-bind="initials"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 id="about-title" class="section-title reveal">About me</h2>
+        <div class="mt-10 grid gap-10 md:grid-cols-[1.3fr_1fr]">
+          <div id="about-text" class="reveal space-y-4 text-muted leading-relaxed"></div>
+          <div class="reveal">
+            <div id="about-focus" class="card p-6"></div>
+            <div id="about-stats" class="mt-4 grid grid-cols-2 gap-4"></div>
+            <a id="resume-btn" class="btn btn-ghost mt-4" download hidden><i data-lucide="download"></i>Download résumé</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section-alt" aria-labelledby="skills-title">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 id="skills-title" class="section-title reveal">Skills and technologies</h2>
+        <div id="skills-grid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 id="projects-title" class="section-title reveal">Featured projects</h2>
+        <div id="filters" class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects by category"></div>
+        <div id="projects-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section section-alt" aria-labelledby="exp-title">
+      <div class="mx-auto max-w-4xl px-5">
+        <h2 id="exp-title" class="section-title reveal">Experience and education</h2>
+        <ol id="timeline" class="timeline mt-10"></ol>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS (hidden when empty) -->
+    <section id="achievements" class="section" aria-labelledby="ach-title" hidden>
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 id="ach-title" class="section-title reveal">Certifications and achievements</h2>
+        <div id="ach-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT: links only, intentionally no form -->
+    <section id="contact" class="section section-alt" aria-labelledby="contact-title">
+      <div class="mx-auto max-w-5xl px-5">
+        <h2 id="contact-title" class="section-title reveal max-w-2xl">Let's Connect and Build Something Great.</h2>
+        <p class="reveal mt-4 max-w-xl text-muted">Recruiters, clients and collaborators are welcome. Pick whichever channel suits you and I'll get back to you.</p>
+        <div id="contact-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="font-heading text-lg font-bold" data-bind="name"></p>
+        <p class="mt-1 text-sm text-muted">&copy; <span id="year"></span> <span data-bind="name"></span>. All rights reserved.</p>
+      </div>
+      <nav aria-label="Footer" class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted" id="footer-nav"></nav>
+      <div class="flex items-center gap-2">
+        <div id="footer-social" class="flex gap-2"></div>
+        <button id="to-top" class="icon-btn" type="button" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
